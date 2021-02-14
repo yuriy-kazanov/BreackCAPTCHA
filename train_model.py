@@ -1,19 +1,19 @@
-import os
 import os.path
-import cv2
 import pickle
-import numpy as np
+
+import cv2
 from imutils import paths
-from keras.models import Sequential
-from keras.layers.core import Flatten, Dense
-from keras.preprocessing.image import img_to_array
+from keras.callbacks import TensorBoard
 from keras.layers.convolutional import Conv2D, MaxPooling2D
+from keras.layers.core import Flatten, Dense
+from keras.models import Sequential
+from keras.preprocessing.image import img_to_array
+import matplotlib.pyplot as plt
+import numpy as np
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.model_selection import train_test_split
-from preprocess import resize_symbol
-import matplotlib.pyplot as plt
-from keras.callbacks import TensorBoard
 
+from preprocess import resize_symbol
 
 input_images_folder = "single symbols"
 model_file = "model.hdf5"
@@ -31,10 +31,10 @@ for input_image in paths.list_images(input_images_folder):
     label = input_image.split(os.path.sep)[-2]
     labels.append(label)
 
-data = np.array(data, dtype = "float") / 255.0
+data = np.array(data, dtype="float") / 255.0
 labels = np.array(labels)
 
-(trainX, testX, trainY, testY) = train_test_split(data, labels, test_size = 0.25, random_state = 42)
+(trainX, testX, trainY, testY) = train_test_split(data, labels, test_size=0.25, random_state=42)
 lb = LabelBinarizer().fit(trainY)
 trainY = lb.transform(trainY)
 testY = lb.transform(testY)
@@ -76,34 +76,3 @@ plt.legend()
 plt.show()
 
 model.save(model_file)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
