@@ -7,7 +7,7 @@ from keras.models import load_model
 
 from preprocess import make_counters, resize_symbol
 
-model_file = "model.hdf5"
+model_file = "model.joblib"
 labels_file = "labels.dat"
 test_images_folder = "test"
 

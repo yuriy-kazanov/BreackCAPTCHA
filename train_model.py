@@ -16,7 +16,7 @@ from sklearn.model_selection import train_test_split
 from preprocess import resize_symbol
 
 input_images_folder = "single symbols"
-model_file = "model.hdf5"
+model_file = "model.joblib"
 labels_file = "labels.dat"
 
 data = []
@@ -61,18 +61,18 @@ callbacks = [TensorBoard(log_dir='tb_logs', histogram_freq=1, write_images=True)
 
 history = model.fit(trainX, trainY, validation_data=(testX, testY), batch_size=32, epochs=10, callbacks=callbacks)
 
-plt.plot(history.history['acc'], label='Аккуратность на обучающем наборе')
-plt.plot(history.history['val_acc'], label='Аккуратность на проверочном наборе')
-plt.xlabel('Эпоха обучения')
-plt.ylabel('Аккуратность')
-plt.legend()
-plt.show()
-
-plt.plot(history.history['loss'], label='Ошибка на обучающем наборе')
-plt.plot(history.history['val_loss'], label='Ошибка на проверочном наборе')
-plt.xlabel('Эпоха обучения')
-plt.ylabel('Ошибка')
-plt.legend()
-plt.show()
+# plt.plot(history.history['acc'], label='Аккуратность на обучающем наборе')
+# plt.plot(history.history['val_acc'], label='Аккуратность на проверочном наборе')
+# plt.xlabel('Эпоха обучения')
+# plt.ylabel('Аккуратность')
+# plt.legend()
+# plt.show()
+#
+# plt.plot(history.history['loss'], label='Ошибка на обучающем наборе')
+# plt.plot(history.history['val_loss'], label='Ошибка на проверочном наборе')
+# plt.xlabel('Эпоха обучения')
+# plt.ylabel('Ошибка')
+# plt.legend()
+# plt.show()
 
 model.save(model_file)

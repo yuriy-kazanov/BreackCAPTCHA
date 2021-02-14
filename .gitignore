@@ -1,5 +1,7 @@
 labels.dat
 model.hdf5
+model.joblib
 __pycache__
 .idea
 venv
+tb_logs
